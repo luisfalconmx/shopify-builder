@@ -1,0 +1,112 @@
+{% assign video_url = 'https://www.youtube.com/embed/' | append: video_id %}
+
+{% if background %}
+  {% assign background_url = background  | img_url: "master" %}
+{% endif %}
+
+{% if picture_background %}
+  {% assign picture_background_url = picture_background  | img_url: "master" %}
+{% endif %}
+
+
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.2/css/brands.min.css">
+
+<div class="video-{{id}}">
+  <div class="video__media-{{id}}">
+    <iframe class="video__iframe-{{id}}" src="{{video_url}}" width="100%" height="100%" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+    {% if show_social_icons == true %}
+      <div class="video__container-icons-{{id}}">
+        {% if facebook %}
+          <a class="video__social-icon-{{id}}" href="{{facebook}}">
+            <div class="fab fa-facebook-f"></div>
+          </a>
+        {% endif %}
+        {% if instagram %}
+          <a class="video__social-icon-{{id}}" href="{{instagram}}">
+            <div class="fab fa-instagram"></div>
+          </a>
+        {% endif %}
+        {% if twitter %}
+          <a class="video__social-icon-{{id}}" href="{{twitter}}">
+            <div class="fab fa-twitter"></div>
+          </a>
+        {% endif %}
+        {% if youtube %}
+          <a class="video__social-icon-{{id}}" href="{{youtube}}">
+            <div class="fab fa-youtube"></div>
+          </a>
+        {% endif %}
+      </div>
+    {% endif %}
+
+  </div>
+  <div class="video__picture-{{id}}">
+  </div>
+</div>
+
+{% style %}
+.video-{{id}} {
+  width: 100%;
+  height: auto;
+  min-height: 500px;
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  align-items: center;
+  padding-top: {{padding_top}}px;
+  padding-bottom: {{padding_bottom}}px;
+  margin-top: {{margin_top}}px;
+  margin-bottom: {{margin_bottom}}px;
+  background-image: url('{{ background_url }}');
+  background-position: {{background_position}};
+  background-size: {{background_size}};
+  background_repeat: {{background_repeat}};
+}
+
+.video__media-{{id}} {
+  padding: {{video_padding}}px;
+}
+
+.video__container-icons-{{id}} {
+  width: 80%;
+  margin: auto;
+  display: flex;
+  justify-content: space-evenly;
+  margin-top: 20px;
+}
+
+.video__social-icon-{{id}} {
+  display: block;
+  font-size: 20px;
+  color: black;
+  background-color: white;
+  padding: 4px 9px;
+  border-radius: 50px;
+}
+
+.video__picture-{{id}} {
+  width: 100%;
+  height: 100%;
+  background-image: url('{{ picture_background_url }}');
+  background-position: {{picture_background_position}};
+  background-size: {{picture_background_size}};
+  background_repeat: {{picture_background_repeat}};
+}
+
+@media screen and (max-width: 768px) {
+  .video-{{id}} {
+    grid-template-columns: 1fr;
+    height: auto;
+    min-height: auto;
+  }
+
+  .video__picture-{{id}} {
+    display: none;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .video__media-{{id}} {
+    padding: 0;
+  }
+}
+{% endstyle %}

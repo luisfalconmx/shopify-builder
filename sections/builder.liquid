@@ -96,7 +96,38 @@
     background_mobile: block.settings.background_mobile
 
   }%}
-{% endif %}
+  {% endif %}
+
+  {% if block.type == 'video' %}
+  {% include 'video.builder.liquid', {
+    id: block.id
+
+    padding_top: block.settings.padding_top
+    padding_bottom: block.settings.padding_bottom
+    margin_top: block.settings.margin_top
+    margin_bottom: block.settings.margin_bottom
+    background: block.settings.background
+    background_position: block.settings.background_position
+    background_size: block.settings.background_size
+    background_repeat: block.settings.background_repeat
+    background_mobile: block.settings.background_mobile
+
+    picture_background: block.settings.picture_background
+    picture_background_position: block.settings.picture_background_position
+    picture_background_size: block.settings.picture_background_size
+    picture_background_repeat: block.settings.picture_background_repeat
+
+    show_social_icons: block.settings.show_social_icons
+
+    video_id: block.settings.video_id
+    video_padding: block.settings.video_padding
+
+    facebook: block.settings.facebook
+    instagram: block.settings.instagram
+    twitter: block.settings.twitter
+    youtube: block.settings.youtube
+  }%}
+  {% endif %}
 
 {% endfor %}
 
@@ -1018,6 +1049,266 @@
           "type": "image_picker",
           "id": "background_mobile",
           "label": "Background (Responsive)"
+        }
+      ]
+    },
+    {
+      "type": "video",
+      "name": "Video",
+      "settings": [
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding Top",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding Bottom",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 0
+        },
+        {
+          "type": "image_picker",
+          "id": "background",
+          "label": "Background"
+        },
+        {
+          "type": "select",
+          "id": "background_position",
+          "label": "Background Position",
+          "default": "center center",
+          "options": [
+            {
+              "value": "left top",
+              "label": "Left Top"
+            },
+            {
+              "value": "left center",
+              "label": "Left Center"
+            },
+            {
+              "value": "left bottom",
+              "label": "Left Bottom"
+            },
+            {
+              "value": "right top",
+              "label": "Right Top"
+            },
+            {
+              "value": "right center",
+              "label": "Right Center"
+            },
+            {
+              "value": "right bottom",
+              "label": "Right Bottom"
+            },
+            {
+              "value": "center top",
+              "label": "Center Top"
+            },
+            {
+              "value": "center center",
+              "label": "Center Center"
+            },
+            {
+              "value": "center bottom",
+              "label": "Center Bottom"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "background_size",
+          "label": "Background Size",
+          "default": "auto",
+          "options": [
+            {
+              "value": "auto",
+              "label": "Auto"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            },
+            {
+              "value": "cover",
+              "label": "Cover"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "background_repeat",
+          "label": "Background Repeat",
+          "options": [
+            {
+              "value": "no-repeat",
+              "label": "No repeat"
+            },
+            {
+              "value": "repeat",
+              "label": "Repeat"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "background_mobile",
+          "label": "Background (Responsive)"
+        },
+        {
+          "type": "text",
+          "id": "video_id",
+          "label": "Youtube Video ID"
+        },
+        {
+          "type": "range",
+          "id": "video_padding",
+          "label": "Video Padding",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 40
+        },
+        {
+          "type": "checkbox",
+          "id": "show_social_icons",
+          "label": "Show Social Icons",
+          "default": true
+        },
+        {
+          "type": "url",
+          "id": "facebook",
+          "label": "Facebook Url"
+        },
+        {
+          "type": "url",
+          "id": "instagram",
+          "label": "Instagram Url"
+        },
+        {
+          "type": "url",
+          "id": "twitter",
+          "label": "Twitter Url"
+        },
+        {
+          "type": "url",
+          "id": "youtube",
+          "label": "Youtube Url"
+        },
+        {
+          "type": "image_picker",
+          "id": "picture_background",
+          "label": "Picture Background"
+        },
+        {
+          "type": "select",
+          "id": "picture_background_position",
+          "label": "Picture Background Position",
+          "default": "center center",
+          "options": [
+            {
+              "value": "left top",
+              "label": "Left Top"
+            },
+            {
+              "value": "left center",
+              "label": "Left Center"
+            },
+            {
+              "value": "left bottom",
+              "label": "Left Bottom"
+            },
+            {
+              "value": "right top",
+              "label": "Right Top"
+            },
+            {
+              "value": "right center",
+              "label": "Right Center"
+            },
+            {
+              "value": "right bottom",
+              "label": "Right Bottom"
+            },
+            {
+              "value": "center top",
+              "label": "Center Top"
+            },
+            {
+              "value": "center center",
+              "label": "Center Center"
+            },
+            {
+              "value": "center bottom",
+              "label": "Center Bottom"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "picture_background_size",
+          "label": "Picture Background Size",
+          "default": "auto",
+          "options": [
+            {
+              "value": "auto",
+              "label": "Auto"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            },
+            {
+              "value": "cover",
+              "label": "Cover"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "picture_background_repeat",
+          "label": "Picture Background Repeat",
+          "options": [
+            {
+              "value": "no-repeat",
+              "label": "No repeat"
+            },
+            {
+              "value": "repeat",
+              "label": "Repeat"
+            }
+          ]
         }
       ]
     }
