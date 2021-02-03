@@ -1,0 +1,17 @@
+# Ignore shopify theme files
+assets/*
+config/*
+layout/*
+locales/*
+sections/*
+snippets/*
+templates/*
+
+# Ignore development files
+config.yml
+.prettierignore
+
+# Exclude project files
+!templates/**/*.builder.liquid
+!sections/**/builder.liquid
+!snippets/**/*.builder.liquid

@@ -1,0 +1,139 @@
+{% for block in section.blocks %}
+
+  {% if block.type == 'navbar' %}
+    {% include 'navbar.builder.liquid', {
+      title: block.settings.title
+    }%}
+  {% endif %}
+
+{% endfor %}
+
+{% schema %}
+{
+  "name": "Builder",
+  "blocks": [
+    {
+      "type": "text",
+      "name": "hero",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "navbar",
+      "name": "navbar",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero",
+          "default": "filemon"
+        }
+      ]
+    },
+    {
+      "type": "textss",
+      "name": "navbar1",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "textsss",
+      "name": "navbar2",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "textssssss",
+      "name": "navbar3",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "textsa",
+      "name": "navbar4",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "textass",
+      "name": "navbar5",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "teasdxtass",
+      "name": "navbar6",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "textasfqws",
+      "name": "navbar7",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "textasdddd",
+      "name": "navbar7asd",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    },
+    {
+      "type": "textasscs",
+      "name": "navbarc1",
+      "settings": [
+        {
+          "type": "text",
+          "id": "title",
+          "label": "hero"
+        }
+      ]
+    }
+  ]
+}
+{% endschema %}
