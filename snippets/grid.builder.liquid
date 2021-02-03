@@ -1,0 +1,151 @@
+{% if background %}
+  {% assign background_url = background  | img_url: "master" %}
+{% endif %}
+
+<div class="grid-{{id}}">
+  {% if header_title %}
+    <h2 class="grid__header-{{id}}">{{header_title}}</h2>
+  {% endif %}
+  <div class="grid__container-{{id}}">
+    {% for product in collections[collection_select].products limit:limit_product %}
+      <a class="grid__item-{{id}}" href="{{shop.url | append: '/products/' | append: product.handle}}">
+        <div class="grid__head-{{id}}">
+          {% if product.images.size == 1 %}
+            <img class="grid__image-{{id}}" src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
+          {% else %}
+            {% for image in product.images limit:2 %}
+              <img class="grid__image--multiple-{{id}}" src="{{image | img_url: 'master'}}" alt="{{product.title}}">
+            {% endfor %}
+          {% endif %}
+        </div>
+        <div class="grid__content-{{id}}">
+          {% if show_title == true %}
+            <h3 class="grid__title-{{id}}">{{ product.title }}</h3>
+          {% endif %}
+
+          {% if show_button == true %}
+            <div class="grid__button-{{id}}">
+              {% if show_price == true %}
+                ${{product.price | divided_by: 100}} - 
+              {% endif %}
+              {{button_title}}
+            </div>
+          {% endif %}
+        </div>
+      </a>
+      {% endfor %}
+  </div>
+</div>
+
+
+{% style %}
+{{ header_font_family | font_face }}
+{{ title_font_family | font_face }}
+{{ button_font_family | font_face }}
+
+.grid-{{id}} {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-image: url('{{ background_url }}');
+  background-position: {{background_position}};
+  background-size: {{background_size}};
+  background_repeat: {{background_repeat}};
+  padding-top: {{section_padding_top}}px;
+  padding-bottom: {{section_padding_bottom}}px;
+}
+
+.grid__header-{{id}} {
+  font-size: {{header_font_size}}px;
+  font-family: {{header_font_family.family }};
+  text-transform: {{header_text_transform}};
+  margin-top: {{header_margin_top}}px;
+  margin-bottom: {{header_margin_bottom}}px;
+  color: {{header_color}};
+  font-weight: {{header_font_weight}};
+}
+
+.grid__container-{{id}} {
+  width: 100%;
+  padding: 0 8%;
+  grid-gap: 20px;
+  display: flex;
+  justify-content: space-evenly;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.grid__item-{{id}} {
+  width: 300px;
+  height: auto;
+  display: block;
+  position: relative;
+}
+
+.grid__image--multiple-{{id}}:nth-of-type(1) {
+  position: relative;
+  top: 0;
+  left: 0;
+  transition: all ease .3s;
+  z-index: 3;
+}
+
+.grid__image--multiple-{{id}}:nth-of-type(2) {
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: 2;
+  opacity: 0;
+}
+
+.grid__head-{{id}}:hover > .grid__image--multiple-{{id}}:nth-of-type(1) {
+  opacity: 0;
+}
+
+.grid__head-{{id}}:hover > .grid__image--multiple-{{id}}:nth-of-type(2) {
+  opacity: 1;
+}
+
+.grid__title-{{id}} {
+  font-size: {{title_font_size}}px;
+  font-family: {{title_font_family.family }};
+  text-transform: {{title_text_transform}};
+  margin-top: {{title_margin_top}}px;
+  margin-bottom: {{title_margin_bottom}}px;
+  color: {{title_color}};
+  font-weight: {{title_font_weight}};
+  text-align: {{title_text_align}};
+}
+
+.grid__button-{{id}} {
+  width: 100%;
+  height: auto;
+  border: none;
+  font-size: {{button_font_size}}px;
+  font_family: {{button_font_family.family }};
+  background-color: {{button_background_color}};
+  color: {{button_color}};
+  text-align: {{button_text_align}};
+  padding-top: {{button_padding_y}}px;
+  padding-bottom: {{button_padding_y}}px;
+  padding-right: {{button_padding_x}}px;
+  padding-left: {{button_padding_x}}px;
+  border-radius: {{button_border_radius}}px;
+}
+
+{% endstyle %}
+
+{% if background_mobile %}
+{% style %}
+@media screen and (max-width: 768px) {
+  .grid-{{id}} {
+    background-image: url('{{ background_mobile | img_url: "master" }}');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+{% endstyle %}
+{% endif %}
