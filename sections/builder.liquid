@@ -1,136 +1,171 @@
 {% for block in section.blocks %}
 
-  {% if block.type == 'navbar' %}
-    {% include 'navbar.builder.liquid', {
-      title: block.settings.title
+  {% if block.type == 'banner' %}
+    {% include 'banner.builder.liquid', {
+      id: block.id
+      height: block.settings.height
+      padding_x: block.settings.padding_x
+      padding_y: block.settings.padding_y
+      margin_top: block.settings.margin_top
+      margin_bottom: block.settings.margin_bottom
+      background: block.settings.background
+      background_position: block.settings.background_position
+      background_size: block.settings.background_size
+      background_repeat: block.settings.background_repeat
+      background_mobile: block.settings.background_mobile
     }%}
   {% endif %}
 
 {% endfor %}
+
+
 
 {% schema %}
 {
   "name": "Builder",
   "blocks": [
     {
-      "type": "text",
-      "name": "hero",
+      "type": "banner",
+      "name": "Banner",
       "settings": [
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "navbar",
-      "name": "navbar",
-      "settings": [
+          "type": "range",
+          "id": "height",
+          "label": "Height",
+          "unit": "px",
+          "min": 0,
+          "max": 1000,
+          "step": 20,
+          "default": 300
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero",
-          "default": "filemon"
-        }
-      ]
-    },
-    {
-      "type": "textss",
-      "name": "navbar1",
-      "settings": [
+          "type": "range",
+          "id": "padding_y",
+          "label": "Padding - Top / Bottom",
+          "unit": "px",
+          "min": 0,
+          "max": 250,
+          "step": 5,
+          "default": 0
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "textsss",
-      "name": "navbar2",
-      "settings": [
+          "type": "range",
+          "id": "padding_x",
+          "label": "Padding - Right / Left",
+          "unit": "px",
+          "min": 0,
+          "max": 250,
+          "step": 5,
+          "default": 0
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "textssssss",
-      "name": "navbar3",
-      "settings": [
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin - Top",
+          "unit": "px",
+          "min": 0,
+          "max": 250,
+          "step": 5,
+          "default": 0
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "textsa",
-      "name": "navbar4",
-      "settings": [
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin - Bottom",
+          "unit": "px",
+          "min": 0,
+          "max": 250,
+          "step": 5,
+          "default": 0
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "textass",
-      "name": "navbar5",
-      "settings": [
+          "type": "image_picker",
+          "id": "background",
+          "label": "Background"
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "teasdxtass",
-      "name": "navbar6",
-      "settings": [
+          "type": "select",
+          "id": "background_position",
+          "label": "Background Position",
+          "default": "center center",
+          "options": [
+            {
+              "value": "left top",
+              "label": "Left Top"
+            },
+            {
+              "value": "left center",
+              "label": "Left Center"
+            },
+            {
+              "value": "left bottom",
+              "label": "Left Bottom"
+            },
+            {
+              "value": "right top",
+              "label": "Right Top"
+            },
+            {
+              "value": "right center",
+              "label": "Right Center"
+            },
+            {
+              "value": "right bottom",
+              "label": "Right Bottom"
+            },
+            {
+              "value": "center top",
+              "label": "Center Top"
+            },
+            {
+              "value": "center center",
+              "label": "Center Center"
+            },
+            {
+              "value": "center bottom",
+              "label": "Center Bottom"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "textasfqws",
-      "name": "navbar7",
-      "settings": [
+          "type": "select",
+          "id": "background_size",
+          "label": "Background Size",
+          "default": "auto",
+          "options": [
+            {
+              "value": "auto",
+              "label": "Auto"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            },
+            {
+              "value": "cover",
+              "label": "Cover"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "textasdddd",
-      "name": "navbar7asd",
-      "settings": [
+          "type": "select",
+          "id": "background_repeat",
+          "label": "Background Repeat",
+          "options": [
+            {
+              "value": "no-repeat",
+              "label": "No repeat"
+            },
+            {
+              "value": "repeat",
+              "label": "Repeat"
+            }
+          ]
+        },
         {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
-        }
-      ]
-    },
-    {
-      "type": "textasscs",
-      "name": "navbarc1",
-      "settings": [
-        {
-          "type": "text",
-          "id": "title",
-          "label": "hero"
+          "type": "image_picker",
+          "id": "background_mobile",
+          "label": "Background (Responsive)"
         }
       ]
     }

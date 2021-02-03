@@ -1,0 +1,35 @@
+<div class="banner-{{id}}">
+  <h1>Test</h1>
+</div>
+
+
+
+
+{% style %}
+.banner-{{id}} {
+  height: {{height}}px;
+  padding: {{padding_y}}px {{padding_x}}px;
+  margin-top: {{margin_top}}px;
+  margin-bottom: {{margin_bottom}}px;
+  background-image: url('{{ background | img_url: "master" }}');
+  background-size: {{background_size}};
+  background-position: {{background_position}};
+  background-repeat: {{background_repeat}};
+}
+{% endstyle %}
+
+
+{% if background_mobile %}
+{% style %}
+@media screen and (max-width: 768px) {
+  .banner-{{id}} {
+    max-height: 500px;
+    background-image: url('{{ background_mobile | img_url: "master" }}');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+}
+
+{% endstyle %}
+{% endif %}
