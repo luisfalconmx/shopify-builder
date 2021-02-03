@@ -1,9 +1,6 @@
 <div class="banner-{{id}}">
 </div>
 
-
-
-
 {% style %}
 .banner-{{id}} {
   height: {{height}}px;
@@ -26,6 +23,14 @@
     background-position: top center;
     background-size: cover;
     background-repeat: no-repeat;
+    height: 100vh;
+    max-height: 550px;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .banner-{{id}} {
+    max-height: 620px;
   }
 }
 

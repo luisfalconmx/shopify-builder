@@ -25,6 +25,9 @@
       collection_select: block.settings.collection_select
       limit_product: block.settings.limit_product
 
+      grid_template: block.settings.grid_template
+      grid_max_column_size: '75%';
+
       show_title: block.settings.show_title
       show_button: block.settings.show_button
       show_price: block.settings.show_price
@@ -223,6 +226,40 @@
       "name": "Grid",
       "settings": [
         {
+          "type": "collection",
+          "id": "collection_select",
+          "label": "Collection"
+        },
+        {
+          "type": "select",
+          "id": "grid_template",
+          "label": "Grid Template",
+          "default": "3-columns",
+          "options": [
+            {
+              "value": "2-columns",
+              "label": "2 Columns"
+            },
+            {
+              "value": "3-columns",
+              "label": "3 Columns"
+            },
+            {
+              "value": "4-columns",
+              "label": "4 Columns"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "limit_product",
+          "label": "Limit",
+          "min": 1,
+          "max": 12,
+          "step": 1,
+          "default": 3
+        },
+        {
           "type": "range",
           "id": "section_padding_top",
           "label": "Section Padding - Top",
@@ -349,20 +386,7 @@
           "label": "Header Color",
           "default": "#000"
         },
-        {
-          "type": "collection",
-          "id": "collection_select",
-          "label": "Collection"
-        },
-        {
-          "type": "range",
-          "id": "limit_product",
-          "label": "Limit",
-          "min": 1,
-          "max": 12,
-          "step": 1,
-          "default": 3
-        },
+
         {
           "type": "range",
           "id": "title_font_size",
