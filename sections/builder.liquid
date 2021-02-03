@@ -68,6 +68,36 @@
     }%}
   {% endif %}
 
+  {% if block.type == 'track' %}
+  {% include 'track.builder.liquid', {
+    id: block.id
+    collection_select: block.settings.collection_select
+    track_template: block.settings.track_template
+    show_title: block.settings.show_title
+
+    title: block.settings.title
+    title_font_size: block.settings.title_font_size
+    title_font_family: block.settings.title_font_family
+    title_text_transform: block.settings.title_text_transform
+    title_margin_top: block.settings.title_margin_top
+    title_margin_bottom: block.settings.title_margin_bottom
+    title_color: block.settings.title_color
+    title_font_weight: block.settings.title_font_weight
+    title_text_align: block.settings.title_text_align
+
+    padding_top: block.settings.padding_top
+    padding_bottom: block.settings.padding_bottom
+    margin_top: block.settings.margin_top
+    margin_bottom: block.settings.margin_bottom
+    background: block.settings.background
+    background_position: block.settings.background_position
+    background_size: block.settings.background_size
+    background_repeat: block.settings.background_repeat
+    background_mobile: block.settings.background_mobile
+
+  }%}
+{% endif %}
+
 {% endfor %}
 
 
@@ -386,7 +416,6 @@
           "label": "Header Color",
           "default": "#000"
         },
-
         {
           "type": "range",
           "id": "title_font_size",
@@ -610,6 +639,296 @@
           "id": "show_price",
           "label": "Show Price",
           "default": true
+        },
+        {
+          "type": "image_picker",
+          "id": "background",
+          "label": "Background"
+        },
+        {
+          "type": "select",
+          "id": "background_position",
+          "label": "Background Position",
+          "default": "center center",
+          "options": [
+            {
+              "value": "left top",
+              "label": "Left Top"
+            },
+            {
+              "value": "left center",
+              "label": "Left Center"
+            },
+            {
+              "value": "left bottom",
+              "label": "Left Bottom"
+            },
+            {
+              "value": "right top",
+              "label": "Right Top"
+            },
+            {
+              "value": "right center",
+              "label": "Right Center"
+            },
+            {
+              "value": "right bottom",
+              "label": "Right Bottom"
+            },
+            {
+              "value": "center top",
+              "label": "Center Top"
+            },
+            {
+              "value": "center center",
+              "label": "Center Center"
+            },
+            {
+              "value": "center bottom",
+              "label": "Center Bottom"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "background_size",
+          "label": "Background Size",
+          "default": "auto",
+          "options": [
+            {
+              "value": "auto",
+              "label": "Auto"
+            },
+            {
+              "value": "contain",
+              "label": "Contain"
+            },
+            {
+              "value": "cover",
+              "label": "Cover"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "background_repeat",
+          "label": "Background Repeat",
+          "options": [
+            {
+              "value": "no-repeat",
+              "label": "No repeat"
+            },
+            {
+              "value": "repeat",
+              "label": "Repeat"
+            }
+          ]
+        },
+        {
+          "type": "image_picker",
+          "id": "background_mobile",
+          "label": "Background (Responsive)"
+        }
+      ]
+    },
+    {
+      "type": "track",
+      "name": "Track",
+      "settings": [
+        {
+          "type": "collection",
+          "id": "collection_select",
+          "label": "Collection"
+        },
+        {
+          "type": "select",
+          "id": "track_template",
+          "label": "Track Template",
+          "default": "left",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "padding_top",
+          "label": "Padding Top",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "padding_bottom",
+          "label": "Padding Bottom",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 20
+        },
+        {
+          "type": "range",
+          "id": "margin_top",
+          "label": "Margin Top",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 0
+        },
+        {
+          "type": "range",
+          "id": "margin_bottom",
+          "label": "Margin Bottom",
+          "unit": "px",
+          "min": 0,
+          "max": 200,
+          "step": 5,
+          "default": 0
+        },
+        {
+          "type": "checkbox",
+          "id": "show_title",
+          "label": "Show Title",
+          "default": true
+        },
+        {
+          "type": "text",
+          "id": "title",
+          "label": "Title",
+          "default": "Title"
+        },
+        {
+          "type": "range",
+          "id": "title_font_size",
+          "label": "Title Font Size",
+          "unit": "px",
+          "min": 1,
+          "max": 64,
+          "step": 1,
+          "default": 32
+        },
+        {
+          "type": "font_picker",
+          "id": "title_font_family",
+          "label": "Title Font Family",
+          "default": "work_sans_n6"
+        },
+        {
+          "type": "select",
+          "id": "title_text_transform",
+          "label": "Title Text Transform",
+          "default": "none",
+          "options": [
+            {
+              "value": "none",
+              "label": "None"
+            },
+            {
+              "value": "capitalize",
+              "label": "Capitalize"
+            },
+            {
+              "value": "lowercase",
+              "label": "Lowercase"
+            },
+            {
+              "value": "uppercase",
+              "label": "Uppercase"
+            },
+            {
+              "value": "inherit",
+              "label": "Inherit"
+            },
+            {
+              "value": "initial",
+              "label": "Initial"
+            },
+            {
+              "value": "unset",
+              "label": "Unset"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "title_font_weight",
+          "label": "Title Font Weight",
+          "default": "normal",
+          "options": [
+            {
+              "value": "normal",
+              "label": "Normal"
+            },
+            {
+              "value": "lighter",
+              "label": "Lighter"
+            },
+            {
+              "value": "bold",
+              "label": "Bold"
+            },
+            {
+              "value": "bolder",
+              "label": "Bolder"
+            }
+          ]
+        },
+        {
+          "type": "select",
+          "id": "title_text_align",
+          "label": "Title Text Align",
+          "default": "center",
+          "options": [
+            {
+              "value": "left",
+              "label": "Left"
+            },
+            {
+              "value": "center",
+              "label": "Center"
+            },
+            {
+              "value": "right",
+              "label": "Right"
+            }
+          ]
+        },
+        {
+          "type": "range",
+          "id": "title_margin_top",
+          "label": "Title Margin - Top",
+          "unit": "px",
+          "min": 0,
+          "max": 250,
+          "step": 5,
+          "default": 30
+        },
+        {
+          "type": "range",
+          "id": "title_margin_bottom",
+          "label": "Title Margin - Bottom",
+          "unit": "px",
+          "min": 0,
+          "max": 250,
+          "step": 5,
+          "default": 30
+        },
+        {
+          "type": "color",
+          "id": "title_color",
+          "label": "Title Color",
+          "default": "#000"
         },
         {
           "type": "image_picker",

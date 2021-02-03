@@ -1,0 +1,111 @@
+{% if background %}
+  {% assign background_url = background  | img_url: "master" %}
+{% endif %}
+
+<div class="track-{{id}}">
+  <div class="track__content-{{id}}">
+    {% if show_title %}
+      <h3 class="track__title-{{id}}">{{title}}</h3>
+    {% endif %}
+  </div>
+  {% for product in collections[collection_select].products limit:2 %}
+    <div class="track__product-{{id}}">
+      <a href="{{shop.url | append: '/products/' | append: product.handle}}">
+        <img class="track__image-{{id}}" src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
+      </a>
+    </div>
+  {% endfor %}
+</div>
+
+{% if track_template == 'right' %}
+  {% style %}
+    .track-{{id}} > .track__content-{{id}} {
+      order: 3;
+    }
+    @media screen and (max-width: 768px) {
+      .track-{{id}} > .track__content-{{id}} {
+        order: initial !important;
+      }
+    }
+  {% endstyle %}
+{% endif %}
+
+{% style %}
+{{ title_font_family | font_face }}
+
+.track-{{id}} {
+  width: 100%;
+  height: auto;
+  padding-top: {{padding_top}}px;
+  padding-bottom: {{padding_bottom}}px;
+  padding-left: 4%;
+  padding-right: 4%;
+  margin-top: {{margin_top}}px;
+  margin-bottom: {{margin_bottom}}px;
+  background-image: url('{{ background_url }}');
+  background-position: {{background_position}};
+  background-size: {{background_size}};
+  background_repeat: {{background_repeat}};
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 30px;
+}
+
+.track__image-{{id}} {
+  width: 100%;
+}
+
+.track__title-{{id}} {
+  font-size: {{title_font_size}}px;
+  font-family: {{title_font_family.family }};
+  text-transform: {{title_text_transform}};
+  margin-top: {{title_margin_top}}px;
+  margin-bottom: {{title_margin_bottom}}px;
+  color: {{title_color}};
+  font-weight: {{title_font_weight}};
+  text-align: {{title_text_align}};
+}
+
+@media screen and (max-width: 768px) {
+  .track-{{id}} {
+    grid-template-columns: minmax(200px, 90%);
+    justify-content: center;
+    padding-right: 8%;
+    padding-left: 8%;
+  }
+
+  .track__content-{{id}} {
+    order: 1 !important;
+    text-align: center;
+  }
+
+  .track__title-{{id}} {
+    font-size: 2rem !important;
+  }
+}
+
+@media screen and (max-width: 540px) {
+  .track-{{id}} {
+    grid-template-columns: minmax(200px, 100%);
+  }
+}
+{% endstyle %}
+
+
+{% if background_mobile %}
+{% style %}
+@media screen and (max-width: 768px) {
+  .track-{{id}} {
+    background-image: url('{{ background_mobile | img_url: "master" }}');
+    background-position: top center;
+    background-size: cover;
+    background-repeat: no-repeat;
+  }
+
+  .track__title-{{id}} {
+    text-align: center;
+  }
+}
+
+{% endstyle %}
+{% endif %}
