@@ -2,19 +2,35 @@
   {% assign background_url = background  | img_url: "master" %}
 {% endif %}
 
+{% assign list_of_products = product_1
+  | append: ','
+  | append: product_2
+  | split: ',' %}
+
 <div class="track-{{id}}">
   <div class="track__content-{{id}}">
     {% if show_title %}
       <h3 class="track__title-{{id}}">{{title}}</h3>
     {% endif %}
   </div>
-  {% for product in collections[collection_select].products limit:2 %}
-    <div class="track__product-{{id}}">
-      <a href="{{shop.url | append: '/products/' | append: product.handle}}">
-        <img class="track__image-{{id}}" src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
-      </a>
-    </div>
-  {% endfor %}
+
+  {% if collection_select != "" %}
+    {% for product in collections[collection_select].products limit:2 %}
+      <div class="track__product-{{id}}">
+        <a href="{{shop.url | append: '/products/' | append: product.handle}}">
+          <img class="track__image-{{id}}" src="{{product.featured_image | img_url: 'master'}}" alt="{{product.title}}">
+        </a>
+      </div>
+    {% endfor %}
+  {% else %}
+    {% for item in list_of_products %}
+      <div class="track__product-{{id}}">
+        <a href="{{shop.url | append: '/products/' | append: all_products[item].handle}}">
+          <img class="track__image-{{id}}" src="{{all_products[item].featured_image | img_url: 'master'}}" alt="{{product.title}}">
+        </a>
+      </div>
+    {% endfor %}
+  {% endif %}
 </div>
 
 {% if track_template == 'right' %}

@@ -85,6 +85,10 @@
   {% include 'track.builder.liquid', {
     id: block.id
     collection_select: block.settings.collection_select
+
+    product_1: block.settings.product_1
+    product_2: block.settings.product_2
+
     track_template: block.settings.track_template
     show_title: block.settings.show_title
 
@@ -843,7 +847,18 @@
         {
           "type": "collection",
           "id": "collection_select",
-          "label": "Collection"
+          "label": "Collection",
+          "info": "If a collection is chosen then the products will not be displayed"
+        },
+        {
+          "type": "product",
+          "id": "product_1",
+          "label": "Product 01"
+        },
+        {
+          "type": "product",
+          "id": "product_2",
+          "label": "Product 02"
         },
         {
           "type": "select",
